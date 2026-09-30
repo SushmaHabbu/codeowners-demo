@@ -1,37 +1,33 @@
-# CODEOWNERS Demo
+# Single-File CODEOWNERS Demo
 
-A small learning repository that assigns `@SushmaHabbu` as the code owner of sample files.
+This demo assigns `@SushmaHabbu` as the code owner of exactly one file: `docs/review-practice.md`.
 
 ## Sample Files
 
-| File | Purpose | Matching ownership rule |
+| File | Purpose | Code owner |
 | --- | --- | --- |
-| `src/greeting.mjs` | Small JavaScript function | `/src/` |
-| `tests/greeting.test.mjs` | Two runnable sample tests | `/tests/` |
-| `docs/review-practice.md` | Hands-on pull request exercises | `/docs/` |
-| `.github/CODEOWNERS` | Ownership configuration | `/.github/CODEOWNERS` |
-| `README.md` | This guide | `*` |
+| `src/greeting.mjs` | Small JavaScript function | None |
+| `tests/greeting.test.mjs` | Two runnable sample tests | None |
+| `docs/review-practice.md` | Hands-on pull request exercises | `@SushmaHabbu` |
+| `.github/CODEOWNERS` | Ownership configuration | None |
+| `README.md` | This guide | None |
 
-All rules currently assign the same real owner. The separate directory rules show where you can assign other collaborators later.
+All other files, including any other files under `docs/`, have no assigned code owner. Your repository-owner permissions remain unchanged.
 
-## Ownership Rules
+## Ownership Rule
 
 The configuration lives in [`.github/CODEOWNERS`](.github/CODEOWNERS):
 
 ```text
-* @SushmaHabbu
-/src/ @SushmaHabbu
-/tests/ @SushmaHabbu
-/docs/ @SushmaHabbu
-/.github/CODEOWNERS @SushmaHabbu
+/docs/review-practice.md @SushmaHabbu
 ```
 
-- `*` is the default for every file.
-- `/src/`, `/tests/`, and `/docs/` match those root directories and their contents, including nested files.
-- `/.github/CODEOWNERS` explicitly assigns the ownership configuration itself.
-- The last matching line wins. Directory rules here are intentionally redundant until you assign a different owner.
-- Owners must be real GitHub users with write access. Organization repositories can also use visible teams with explicit write access, in the form `@organization/team`.
-- To assign multiple owners to one pattern, put their usernames on the same line. For the code-owner requirement covering those files, approval from any one of those owners is enough, not necessarily all of them.
+- The leading `/` anchors the path at the repository root.
+- This exact path matches only `docs/review-practice.md`.
+- There is no `*` or directory-wide rule assigning ownership to other files.
+- Code owners must have write access. `SushmaHabbu` already has this access as the repository owner.
+
+For this single-file demo, the CODEOWNERS file itself is intentionally unowned. In a real project, also assign ownership to the configuration and enforce reviews to protect changes to the ownership rules.
 
 ## What Code Ownership Means
 
